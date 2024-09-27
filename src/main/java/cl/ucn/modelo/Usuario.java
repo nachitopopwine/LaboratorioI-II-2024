@@ -3,25 +3,17 @@ package cl.ucn.modelo;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="usuarios")
+@Table(name = "usuarios")
 public class Usuario {
 
     @Id
     private int rut;
     private String nombre;
-    @Column(name="permiso")
+    @Column(name = "permiso")
     private boolean tienePermiso;
-    @ManyToOne()
+    @ManyToOne
     @JoinColumn(name = "recursos_multimedia_id")
     private RecursosMultimedia recursosMultimedia;
-
-   public String getNombre() {
-        return nombre;
-    }
-
-    public boolean tienePermiso() {
-        return tienePermiso;
-    }
 
     public int getRut() {
         return rut;
@@ -29,6 +21,10 @@ public class Usuario {
 
     public void setRut(int rut) {
         this.rut = rut;
+    }
+
+    public String getNombre() {
+        return nombre;
     }
 
     public void setNombre(String nombre) {

@@ -1,11 +1,10 @@
 package cl.ucn.modelo;
 
 import jakarta.persistence.*;
-
 import java.util.List;
 
 @Entity
-@Table(name="recursos")
+@Table(name = "recursos")
 public class RecursosMultimedia {
 
     @Id
@@ -14,11 +13,11 @@ public class RecursosMultimedia {
     private String nombre;
     private String tipo;
     private boolean protegido;
+
     @OneToMany(mappedBy = "recursosMultimedia", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Usuario> usuarios;
 
     public void cargar() {
-        // Simula la carga de un archivo grande en memoria
         System.out.println("Cargando el archivo: " + nombre + " (" + tipo + ")");
     }
 
@@ -26,20 +25,28 @@ public class RecursosMultimedia {
         System.out.println("Mostrando el archivo: " + nombre + " (" + tipo + ")");
     }
 
-    public String getNombre() {
-        return nombre;
-    }
-
-    public String getTipo() {
-        return tipo;
+    public int getId() {
+        return id;
     }
 
     public void setId(int id) {
         this.id = id;
     }
 
-    public int getId() {
-        return id;
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
     public boolean isProtegido() {
